@@ -1,0 +1,45 @@
+how to github repo
+
+git init
+git add *.c
+git add README.md
+git commit -m 'initial project version'
+
+git remote add origin https://github.com/tim-pl-m/chef-hosted-on-premise-tutorial
+git remote -v
+(add the repository manually on github.com)
+git push origin master
+
+git rm --cached -r .kitchen
+	keep file/dir locally
+
+clear history:
+	java -jar ~/Downloads/bfg-1.12.1.jar --strip-biggest-blobs 500 chef-starter
+	java -jar ~/Downloads/bfg-1.12.1.jar --delete-folders .kitchen chef-starter
+	cd chef-starter
+	git reflog expire --expire=now --all && git gc --prune=now --aggressive
+
+	(git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch Rakefile' --prune-empty --tag-name-filter cat -- --all)
+	git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch chef-repo/cookbooks/node/.kitchen' --prune-empty --tag-name-filter cat -- --all
+
+	git rebase -i <commit hash you want to change>
+	i
+	:wq
+	ESC
+
+	oder
+	git checkout <commit hash you want to change>
+	git commit --amend
+	git rebase --onto HEAD HEAD master
+
+	echo ".kitchen" >> .gitignore
+	git commit -m "gitignore"
+	git push origin --force --all
+	git push origin --force --tags
+
+
+	http://stackoverflow.com/questions/2119480/edit-the-root-commit-in-git
+	http://superuser.com/questions/751699/is-there-a-way-to-edit-a-commit-message-in-github
+	https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+	https://help.github.com/articles/create-a-repo/
+	http://git-scm.com/book/de/v1/Git-Grundlagen-Ein-Git-Repository-anlegen

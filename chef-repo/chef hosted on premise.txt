@@ -9,7 +9,7 @@ knife ssl check
 ✔ knife client list
 kitchen create
 
-❑ knife bootstrap
+✔ knife bootstrap
 
 	✔ sudo sh -c "echo '192.168.33.35 node-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
 		?
@@ -18,11 +18,33 @@ kitchen create
 		node-centos65.api.opscode.com/organizations/test151234
 		= https://default-centos65.vagrantup.com
 
-	doku https://docs.chef.io/knife_bootstrap.html
+	doku 
+		https://docs.chef.io/knife_bootstrap.html
+		http://docs.chef.io/chef_client.html#about-bootstrap-operations
 
 	knife bootstrap api.opscode.com/organizations/test151234
-	knife bootstrap --sudo --ssh-user vagrant --sshpassword api.opscode.com/organizations/test151234
+	knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
 
 	https://manage.chef.io/organizations/test151234/nodes
 
+❑ vagrant halt
+
 ❑ cat /etc/chef/client.rb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
