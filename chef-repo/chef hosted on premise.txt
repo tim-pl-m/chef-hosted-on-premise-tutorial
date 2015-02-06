@@ -29,12 +29,29 @@ kitchen create
 
 ❑ vagrant halt
 
-❑ cat /etc/chef/client.rb
+✔ cat /etc/chef/client.rb
 
+node attributes:
 
+original:
+{
+  "tags": []
+}
 
+new:
+{
+  "chef_client": {
+    "config": {
+      "ssl_verify_mode":":verify_peer"
+    }
+  }
+}	
 
+verify:
+knife node list
+knife node show --attribute "chef_client_config.ssl_verify_mode" node-centos65.vagrantup.com
 
+update
 
 
 

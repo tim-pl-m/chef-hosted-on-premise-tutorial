@@ -4,6 +4,7 @@ chef on premise tutorial
 -thanks to o'reilly and mischa taylor for the book 'learning chef'
 
 -register and manage: https://manage.chef.io
+
 -download chef-starter for your account
 
 verify your setup:
@@ -23,6 +24,8 @@ kitchen login
 kitchen create
 knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
 ```
+-to verify login to https://manage.chef.io/organizations/test151234/nodes
+
 
 important chef commands:
 vagrant global-status 
