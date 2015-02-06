@@ -1,0 +1,28 @@
+chef hosted on premise
+
+connected nicht?
+welche adresse/ip nutzen?
+
+knife ssl check 
+✔ läuft :)
+
+✔ knife client list
+kitchen create
+
+❑ knife bootstrap
+
+	✔ sudo sh -c "echo '192.168.33.35 node-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
+		?
+	native and on vm
+	!!	achtung: chef_server_url          "https://api.opscode.com/organizations/test151234"
+		node-centos65.api.opscode.com/organizations/test151234
+		= https://default-centos65.vagrantup.com
+
+	doku https://docs.chef.io/knife_bootstrap.html
+
+	knife bootstrap api.opscode.com/organizations/test151234
+	knife bootstrap --sudo --ssh-user vagrant --sshpassword api.opscode.com/organizations/test151234
+
+	https://manage.chef.io/organizations/test151234/nodes
+
+❑ cat /etc/chef/client.rb

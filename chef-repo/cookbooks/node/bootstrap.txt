@@ -1,0 +1,74 @@
+wlan-141-23-109-116:node Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.
+Connecting to node-centos65.api.opscode.
+ERROR: Network Error: getaddrinfo: nodename nor servname provided, or not known
+Check your knife configuration and network settings
+wlan-141-23-109-116:node Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
+Connecting to node-centos65.api.opscode.com/organizations/test151234
+node-centos65.api.opscode.com/organizations/test151234 Installing Chef Client...
+node-centos65.api.opscode.com/organizations/test151234 --2015-02-06 16:48:15--  https://www.opscode.com/chef/install.sh
+node-centos65.api.opscode.com/organizations/test151234 Auflösen des Hostnamen »www.opscode.com«.... 184.106.28.90
+node-centos65.api.opscode.com/organizations/test151234 Verbindungsaufbau zu www.opscode.com|184.106.28.90|:443... verbunden.
+node-centos65.api.opscode.com/organizations/test151234 HTTP Anforderung gesendet, warte auf Antwort... 200 OK
+node-centos65.api.opscode.com/organizations/test151234 Länge: 18285 (18K) [application/x-sh]
+node-centos65.api.opscode.com/organizations/test151234 In »»STDOUT«« speichern.
+node-centos65.api.opscode.com/organizations/test151234 
+ 0% [                                       ] 0           --.-K/s              Downloading Chef 11 for el...
+node-centos65.api.opscode.com/organizations/test151234 downloading https://www.opscode.com/chef/metadata?v=11&prerelease=false&nightlies=false&p=el&pv=6&m=x86_64
+node-centos65.api.opscode.com/organizations/test151234   to file /tmp/install.sh.2919/metadata.txt
+node-centos65.api.opscode.com/organizations/test151234 trying wget...
+100%[======================================>] 18.285      --.-K/s   in 0,1s    
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 2015-02-06 16:48:16 (143 KB/s) - auf die Standardausgabe geschrieben [18285/18285]
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 url	https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chef-11.18.6-1.el6.x86_64.rpm
+node-centos65.api.opscode.com/organizations/test151234 md5	b4ccffea24007b83ffdd99b16aea9661
+node-centos65.api.opscode.com/organizations/test151234 sha256	f531541c6786f274bd62fb46bc1ea8f2d70c083e10777b2544c6503c0f90c598
+node-centos65.api.opscode.com/organizations/test151234 downloaded metadata file looks valid...
+node-centos65.api.opscode.com/organizations/test151234 downloading https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chef-11.18.6-1.el6.x86_64.rpm
+node-centos65.api.opscode.com/organizations/test151234   to file /tmp/install.sh.2919/chef-11.18.6-1.el6.x86_64.rpm
+node-centos65.api.opscode.com/organizations/test151234 trying wget...
+node-centos65.api.opscode.com/organizations/test151234 trying curl...
+node-centos65.api.opscode.com/organizations/test151234 Comparing checksum with sha256sum...
+node-centos65.api.opscode.com/organizations/test151234 Installing Chef 11
+node-centos65.api.opscode.com/organizations/test151234 installing with rpm...
+node-centos65.api.opscode.com/organizations/test151234 Warnung: /tmp/install.sh.2919/chef-11.18.6-1.el6.x86_64.rpm: Header V4 DSA/SHA1 Signature, Schlüssel-ID 83ef826a: NOKEY
+node-centos65.api.opscode.com/organizations/test151234 Vorbereiten...              ########################################### [100%]
+node-centos65.api.opscode.com/organizations/test151234    1:chef                   ########################################### [100%]
+node-centos65.api.opscode.com/organizations/test151234 Thank you for installing Chef!
+node-centos65.api.opscode.com/organizations/test151234 Starting first Chef Client run...
+node-centos65.api.opscode.com/organizations/test151234 [2015-02-06T16:48:31+00:00] WARN: 
+node-centos65.api.opscode.com/organizations/test151234 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+node-centos65.api.opscode.com/organizations/test151234 SSL validation of HTTPS requests is disabled. HTTPS connections are still
+node-centos65.api.opscode.com/organizations/test151234 encrypted, but chef is not able to detect forged replies or man in the middle
+node-centos65.api.opscode.com/organizations/test151234 attacks.
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 To fix this issue add an entry like this to your configuration file:
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 ```
+node-centos65.api.opscode.com/organizations/test151234   # Verify all HTTPS connections (recommended)
+node-centos65.api.opscode.com/organizations/test151234   ssl_verify_mode :verify_peer
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234   # OR, Verify only connections to chef-server
+node-centos65.api.opscode.com/organizations/test151234   verify_api_cert true
+node-centos65.api.opscode.com/organizations/test151234 ```
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 To check your SSL configuration, or troubleshoot errors, you can use the
+node-centos65.api.opscode.com/organizations/test151234 `knife ssl check` command like so:
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 ```
+node-centos65.api.opscode.com/organizations/test151234   knife ssl check -c /etc/chef/client.rb
+node-centos65.api.opscode.com/organizations/test151234 ```
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 Starting Chef Client, version 11.18.6
+node-centos65.api.opscode.com/organizations/test151234 Creating a new client identity for node-centos65.vagrantup.com using the validator key.
+node-centos65.api.opscode.com/organizations/test151234 resolving cookbooks for run list: []
+node-centos65.api.opscode.com/organizations/test151234 Synchronizing Cookbooks:
+node-centos65.api.opscode.com/organizations/test151234 Compiling Cookbooks...
+node-centos65.api.opscode.com/organizations/test151234 [2015-02-06T16:48:37+00:00] WARN: Node node-centos65.vagrantup.com has an empty run list.
+node-centos65.api.opscode.com/organizations/test151234 Converging 0 resources
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 Running handlers:
+node-centos65.api.opscode.com/organizations/test151234 Running handlers complete
+node-centos65.api.opscode.com/organizations/test151234 Chef Client finished, 0/0 resources updated in 6.959287902 seconds

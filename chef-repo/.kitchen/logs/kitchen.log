@@ -1,0 +1,52 @@
+E, [2015-02-06T17:02:35.960796 #4355] ERROR -- Kitchen: ------Exception-------
+E, [2015-02-06T17:02:35.960994 #4355] ERROR -- Kitchen: Class: Kitchen::UserError
+E, [2015-02-06T17:02:35.961045 #4355] ERROR -- Kitchen: Message: Kitchen YAML file /Users/Tim/adesso local Dev/chef-starter/chef-repo/.kitchen.yml does not exist.
+E, [2015-02-06T17:02:35.961086 #4355] ERROR -- Kitchen: ------Backtrace-------
+E, [2015-02-06T17:02:35.961123 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/loader/yaml.rb:74:in `read'
+E, [2015-02-06T17:02:35.961160 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:139:in `data'
+E, [2015-02-06T17:02:35.961197 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:118:in `suites'
+E, [2015-02-06T17:02:35.961234 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:169:in `filter_instances'
+E, [2015-02-06T17:02:35.961272 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:128:in `build_instances'
+E, [2015-02-06T17:02:35.961309 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:104:in `instances'
+E, [2015-02-06T17:02:35.961377 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/command.rb:115:in `filtered_instances'
+E, [2015-02-06T17:02:35.961415 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/command.rb:145:in `parse_subcommand'
+E, [2015-02-06T17:02:35.961452 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/command/login.rb:32:in `call'
+E, [2015-02-06T17:02:35.961488 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/cli.rb:56:in `perform'
+E, [2015-02-06T17:02:35.961524 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/cli.rb:218:in `login'
+E, [2015-02-06T17:02:35.961561 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems/thor-0.19.1/lib/thor/command.rb:27:in `run'
+E, [2015-02-06T17:02:35.961597 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems/thor-0.19.1/lib/thor/invocation.rb:126:in `invoke_command'
+E, [2015-02-06T17:02:35.961633 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/cli.rb:304:in `invoke_task'
+E, [2015-02-06T17:02:35.961670 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems/thor-0.19.1/lib/thor.rb:359:in `dispatch'
+E, [2015-02-06T17:02:35.961707 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems/thor-0.19.1/lib/thor/base.rb:440:in `start'
+E, [2015-02-06T17:02:35.961743 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/bin/kitchen:13:in `block in <top (required)>'
+E, [2015-02-06T17:02:35.961779 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/errors.rb:154:in `with_friendly_errors'
+E, [2015-02-06T17:02:35.961816 #4355] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/bin/kitchen:13:in `<top (required)>'
+E, [2015-02-06T17:02:35.961853 #4355] ERROR -- Kitchen: /opt/chefdk/bin/kitchen:15:in `load'
+E, [2015-02-06T17:02:35.961888 #4355] ERROR -- Kitchen: /opt/chefdk/bin/kitchen:15:in `<main>'
+E, [2015-02-06T17:02:35.961923 #4355] ERROR -- Kitchen: ----------------------
+E, [2015-02-06T17:02:45.786076 #4357] ERROR -- Kitchen: ------Exception-------
+E, [2015-02-06T17:02:45.786207 #4357] ERROR -- Kitchen: Class: Kitchen::UserError
+E, [2015-02-06T17:02:45.786239 #4357] ERROR -- Kitchen: Message: Kitchen YAML file /Users/Tim/adesso local Dev/chef-starter/chef-repo/.kitchen.yml does not exist.
+E, [2015-02-06T17:02:45.786265 #4357] ERROR -- Kitchen: ------Backtrace-------
+E, [2015-02-06T17:02:45.786289 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/loader/yaml.rb:74:in `read'
+E, [2015-02-06T17:02:45.786387 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:139:in `data'
+E, [2015-02-06T17:02:45.786438 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:118:in `suites'
+E, [2015-02-06T17:02:45.786520 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:169:in `filter_instances'
+E, [2015-02-06T17:02:45.786574 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:128:in `build_instances'
+E, [2015-02-06T17:02:45.786623 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/config.rb:104:in `instances'
+E, [2015-02-06T17:02:45.786671 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/command.rb:115:in `filtered_instances'
+E, [2015-02-06T17:02:45.786720 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/command.rb:145:in `parse_subcommand'
+E, [2015-02-06T17:02:45.786774 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/command/list.rb:32:in `call'
+E, [2015-02-06T17:02:45.786846 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/cli.rb:56:in `perform'
+E, [2015-02-06T17:02:45.786964 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/cli.rb:97:in `list'
+E, [2015-02-06T17:02:45.786993 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems/thor-0.19.1/lib/thor/command.rb:27:in `run'
+E, [2015-02-06T17:02:45.787019 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems/thor-0.19.1/lib/thor/invocation.rb:126:in `invoke_command'
+E, [2015-02-06T17:02:45.787044 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/cli.rb:304:in `invoke_task'
+E, [2015-02-06T17:02:45.787068 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems/thor-0.19.1/lib/thor.rb:359:in `dispatch'
+E, [2015-02-06T17:02:45.787092 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems/thor-0.19.1/lib/thor/base.rb:440:in `start'
+E, [2015-02-06T17:02:45.787116 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/bin/kitchen:13:in `block in <top (required)>'
+E, [2015-02-06T17:02:45.787141 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/lib/kitchen/errors.rb:154:in `with_friendly_errors'
+E, [2015-02-06T17:02:45.787165 #4357] ERROR -- Kitchen: /opt/chefdk/embedded/apps/test-kitchen/bin/kitchen:13:in `<top (required)>'
+E, [2015-02-06T17:02:45.787216 #4357] ERROR -- Kitchen: /opt/chefdk/bin/kitchen:15:in `load'
+E, [2015-02-06T17:02:45.787239 #4357] ERROR -- Kitchen: /opt/chefdk/bin/kitchen:15:in `<main>'
+E, [2015-02-06T17:02:45.787262 #4357] ERROR -- Kitchen: ----------------------
