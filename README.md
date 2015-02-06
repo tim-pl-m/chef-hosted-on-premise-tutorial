@@ -7,18 +7,21 @@ chef on premise tutorial
 -download chef-starter for your account
 
 verify your setup:
+```bash
 knife ssl check 
 knife client list
 kitchen create
+```
 
 create the node(bootstrap):
+```bash
 sudo sh -c "echo '192.168.33.35 node-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
 cd chef-repo/cookbooks/node
 kitchen converge
 kitchen login
 [vagrant@node-centos65 ~]$ sudo sh -c "echo '192.168.33.35 node-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
 [vagrant@node-centos65 ~]$ exit
-
+```
 
 important chef commands:
 vagrant global-status 
