@@ -10,7 +10,6 @@ verify your setup:
 ```bash
 knife ssl check 
 knife client list
-kitchen create
 ```
 
 create the node(bootstrap):
@@ -21,6 +20,8 @@ kitchen converge
 kitchen login
 [vagrant@node-centos65 ~]$ sudo sh -c "echo '192.168.33.35 node-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
 [vagrant@node-centos65 ~]$ exit
+kitchen create
+knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
 ```
 
 important chef commands:
