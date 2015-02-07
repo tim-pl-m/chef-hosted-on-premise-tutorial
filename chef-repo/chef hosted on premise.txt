@@ -51,14 +51,65 @@ verify:
 knife node list
 knife node show --attribute "chef_client_config.ssl_verify_mode" node-centos65.vagrantup.com
 
-update
+knife ssl fetch
+
+update:
+{
+  "chef_client": {
+    "config": {
+      "ssl_verify_mode":":verify_peer",
+      "ssl_ca_file":"/chef-repo/.chef/trusted_certs/DigiCert_Secure_Server_CA.crt"
+    }
+  }
+}	
+
+knife node show --attribute "chef_client_config.ssl_ca_file" node-centos65.vagrantup.com
+kitchen login
+ls /chef-repo/.chef/trusted_certs
+exit
+
+❑ execute cookbooks
+
+knife cookbook site download chef-client
+tar xvf chef-client*.tar.gz -C cookbooks/
+
+knife cookbook site download cron
+tar xvf cron*.tar.gz -C cookbooks/
+knife cookbook site download logrotate
+tar xvf logrotate*.tar.gz -C cookbooks/
+
+knife cookbook site download windows
+tar xvf windows*.tar.gz -C cookbooks/
+
+knife cookbook site download chef_handler
+tar xvf chef_handler*.tar.gz -C cookbooks/
+
+
+knife cookbook upload cron --cookbook-path cookbooks
+knife cookbook upload logrotate --cookbook-path cookbooks
+knife cookbook upload chef_handler --cookbook-path cookbooks
+knife cookbook upload windows --cookbook-path cookbooks
+knife cookbook upload chef-client --cookbook-path cookbooks
+
+knife node run_list add node-centos65.vagrantup.com "recipe[chef-client::delete_validation]"
+knife node run_list add node-centos65.vagrantup.com "recipe[chef-client]"
+knife node run_list add node-centos65.vagrantup.com "recipe[chef-client::config]"
+
+❑ clock has drifted by more than 15 minutes.
 
 
 
 
+why delete validation-pem:
+chef-server requires every request to be public/private-key auth.
+every node has its pair
+public key stored on chef-server (validation.pem;organization-vaidator.pem)
+private key used to authenticate requests (username.pem)
+each chef-client has a private key (client.pem)
 
-
-
+check if val.pem is there:
+[vagrant@node-centos65 ~]$ ls /etc/chef
+client.pem  client.rb  first-boot.json  validation.pem
 
 
 

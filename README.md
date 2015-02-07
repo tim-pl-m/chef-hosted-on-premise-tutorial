@@ -5,6 +5,8 @@ chef on premise tutorial
 
 -register and manage: https://manage.chef.io
 
+❑ what problem to solve
+❑ how to use
 -download chef-starter for your account
 
 verify your setup:
