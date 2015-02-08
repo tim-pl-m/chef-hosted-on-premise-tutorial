@@ -12,7 +12,9 @@ kitchen create
 ✔ knife bootstrap
 
 	✔ sudo sh -c "echo '192.168.33.35 node-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
-		?
+		register DNS on lm(local maschnine)
+	✔ sudo sh -c "echo '192.168.33.34 default-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
+		register DNS on vm
 	native and on vm
 	!!	achtung: chef_server_url          "https://api.opscode.com/organizations/test151234"
 		node-centos65.api.opscode.com/organizations/test151234
@@ -68,7 +70,7 @@ kitchen login
 ls /chef-repo/.chef/trusted_certs
 exit
 
-❑ execute cookbooks
+✔ execute cookbooks
 
 knife cookbook site download chef-client
 tar xvf chef-client*.tar.gz -C cookbooks/
@@ -95,10 +97,33 @@ knife node run_list add node-centos65.vagrantup.com "recipe[chef-client::delete_
 knife node run_list add node-centos65.vagrantup.com "recipe[chef-client]"
 knife node run_list add node-centos65.vagrantup.com "recipe[chef-client::config]"
 
+verify:
+knife node node-centos65.vagrantup.com show -r
+
 ❑ clock has drifted by more than 15 minutes.
+	?
+
+❑ sudo: chef-client: command not found
+	knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
+		reinstalls chef-client
+	(or on vm: install chef-client)
+
+✔ create new node
+mkdir node2
+kitchen init --create-gemfile
+# adjust .kitchen.yml
+kitchen create
+sudo sh -c "echo '192.168.33.36 node2-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
+[vagrant@node-centos65 ~]$ sudo sh -c "echo '192.168.33.37 default-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
+knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+knife node run_list add node2-centos65.vagrantup.com "recipe[chef-client::delete_validation],recipe[chef-client],recipe[chef-client::config]"
 
 
-
+git uncommit:
+git reset HEAD chef-repo/.chef/trusted_certs/DigiCert_Secure_Server_CA.crt
+new file:   chef-repo/.chef/trusted_certs/DigiCert_Secure_Server_CA.crt
+new file:   chef-repo/.chef/trusted_certs/wildcard_opscode_com.crt
+	http://sethrobertson.github.io/GitFixUm/fixup.html#uncommitted_somethings
 
 why delete validation-pem:
 chef-server requires every request to be public/private-key auth.
@@ -112,6 +137,9 @@ check if val.pem is there:
 client.pem  client.rb  first-boot.json  validation.pem
 
 
+apache:
+	see book
+	http://gettingstartedwithchef.com/managing-multiple-nodes.html
 
 
 
