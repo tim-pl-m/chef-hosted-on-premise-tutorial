@@ -1,0 +1,939 @@
+Last login: Sat Feb  7 18:48:17 on ttys005
+TimMacBookAir-2:~ Tim$ cd a
+adesso local Dev/ appm/             appt copy/        
+anaconda/         appt/             aws-java-sdk/     
+TimMacBookAir-2:~ Tim$ cd a
+adesso local Dev/ appm/             appt copy/        
+anaconda/         appt/             aws-java-sdk/     
+TimMacBookAir-2:~ Tim$ cd adesso\ local\ Dev/
+.DS_Store                error logs/              vagrant/
+chef-starter/            kitchen-azure-demo/      vagrant2/
+chef-starter.bfg-report/ learningchef/            zero/
+TimMacBookAir-2:~ Tim$ cd adesso\ local\ Dev/chef-starter
+chef-starter/            chef-starter.bfg-report/ 
+TimMacBookAir-2:~ Tim$ cd adesso\ local\ Dev/chef-starter/
+.-1/        .DS_Store   .git/       .gitignore  README.md   chef-repo/
+TimMacBookAir-2:~ Tim$ cd adesso\ local\ Dev/chef-starter/
+.-1/        .DS_Store   .git/       .gitignore  README.md   chef-repo/
+TimMacBookAir-2:~ Tim$ cd adesso\ local\ Dev/chef-starter/chef-repo/
+.DS_Store                   chef_handler-1.1.6.tar.gz
+.chef/                      cookbooks/
+.gitignore                  cron-1.6.1.tar.gz
+.kitchen/                   how to github repo.txt
+README.md                   logrotate-1.8.0.tar.gz
+chef hosted on premise.txt  roles/
+chef-client-4.1.1.tar.gz    windows-1.36.1.tar.gz
+TimMacBookAir-2:~ Tim$ cd adesso\ local\ Dev/chef-starter/chef-repo/cookbooks/
+TimMacBookAir-2:cookbooks Tim$ knife client delete node
+Do you really want to delete node? (Y/N)N
+You said no, so I'm done here.
+TimMacBookAir-2:cookbooks Tim$ 
+TimMacBookAir-2:cookbooks Tim$ ls
+MyAzureCookbook	chef_handler	cron		node		windows
+chef-client	chefignore	logrotate	starter
+TimMacBookAir-2:cookbooks Tim$ mkdir node2
+TimMacBookAir-2:cookbooks Tim$ cd node2
+TimMacBookAir-2:node2 Tim$ knife client list
+node-centos65.vagrantup.com
+test151234-validator
+TimMacBookAir-2:node2 Tim$ kitchen init --create gemfile
+      create  .kitchen.yml
+      create  test/integration/default
+Successfully installed kitchen-vagrant-0.15.0
+Parsing documentation for kitchen-vagrant-0.15.0
+Installing ri documentation for kitchen-vagrant-0.15.0
+1 gem installed
+TimMacBookAir-2:node2 Tim$ bundle install
+Could not locate Gemfile
+TimMacBookAir-2:node2 Tim$ kitchen init --create-gemfile
+   identical  .kitchen.yml
+      create  Gemfile
+      append  Gemfile
+      append  Gemfile
+You must run `bundle install' to fetch any new gems.
+TimMacBookAir-2:node2 Tim$ bundle install
+Fetching gem metadata from https://rubygems.org/..........
+Resolving dependencies...
+Using mixlib-shellout 2.0.1
+Using net-ssh 2.9.2
+Using net-scp 1.2.1
+Using safe_yaml 1.0.4
+Using thor 0.19.1
+Using test-kitchen 1.3.1
+Using kitchen-vagrant 0.15.0
+Using bundler 1.7.12
+Your bundle is complete!
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+TimMacBookAir-2:node2 Tim$ kitchen list
+Instance       Driver   Provisioner  Last Action
+node-centos65  Vagrant  Shell        <Not Created>
+TimMacBookAir-2:node2 Tim$ kitchen create
+-----> Starting Kitchen (v1.3.1)
+-----> Creating <node-centos65>...
+       Bringing machine 'default' up with 'virtualbox' provider...
+       ==> default: Importing base box 'learningchef/centos65'...
+==> default: Matching MAC address for NAT networking...
+       ==> default: Checking if box 'learningchef/centos65' is up to date...
+       ==> default: Setting the name of the VM: node-centos65_default_1423402181544_30467
+       ==> default: Fixed port collision for 22 => 2222. Now on port 2200.
+       ==> default: Clearing any previously set network interfaces...
+       ==> default: Preparing network interfaces based on configuration...
+           default: Adapter 1: nat
+           default: Adapter 2: hostonly
+       ==> default: Forwarding ports...
+           default: 22 => 2200 (adapter 1)
+       ==> default: Booting VM...
+       ==> default: Waiting for machine to boot. This may take a few minutes...
+           default: SSH address: 127.0.0.1:2200
+           default: SSH username: vagrant
+           default: SSH auth method: private key
+           default: Warning: Connection timeout. Retrying...
+           default: 
+           default: Vagrant insecure key detected. Vagrant will automatically replace
+           default: this with a newly generated keypair for better security.
+           default: 
+           default: Inserting generated public key within guest...
+           default: Removing insecure key from the guest if its present...
+           default: Key inserted! Disconnecting and reconnecting using new SSH key...
+       ==> default: Machine booted and ready!
+       ==> default: Checking for guest additions in VM...
+       ==> default: Setting hostname...
+       ==> default: Configuring and enabling network interfaces...
+       ==> default: Mounting shared folders...
+           default: /chef-repo => /Users/Tim/adesso local Dev/chef-starter/chef-repo
+       ==> default: Machine not provisioning because `--no-provision` is specified.
+       Vagrant instance <node-centos65> created.
+       Finished creating <node-centos65> (0m53.05s).
+-----> Kitchen is finished. (0m53.40s)
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
+Connecting to node-centos65.api.opscode.com/organizations/test151234
+ERROR: Errno::ECONNRESET: Connection reset by peer
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
+Connecting to node-centos65.api.opscode.com/organizations/test151234
+node-centos65.api.opscode.com/organizations/test151234 Installing Chef Client...
+node-centos65.api.opscode.com/organizations/test151234 --2015-02-08 13:31:33--  https://www.opscode.com/chef/install.sh
+node-centos65.api.opscode.com/organizations/test151234 Auflösen des Hostnamen »www.opscode.com«.... 184.106.28.91
+node-centos65.api.opscode.com/organizations/test151234 Verbindungsaufbau zu www.opscode.com|184.106.28.91|:443... verbunden.
+node-centos65.api.opscode.com/organizations/test151234 HTTP Anforderung gesendet, warte auf Antwort... 200 OK
+node-centos65.api.opscode.com/organizations/test151234 Länge: 18285 (18K) [application/x-sh]
+node-centos65.api.opscode.com/organizations/test151234 In »»STDOUT«« speichern.
+node-centos65.api.opscode.com/organizations/test151234 
+ 0% [                                       ] 0           --.-K/s              Downloading Chef 11 for el...
+node-centos65.api.opscode.com/organizations/test151234 downloading https://www.opscode.com/chef/metadata?v=11&prerelease=false&nightlies=false&p=el&pv=6&m=x86_64
+node-centos65.api.opscode.com/organizations/test151234   to file /tmp/install.sh.2829/metadata.txt
+node-centos65.api.opscode.com/organizations/test151234 trying wget...
+100%[======================================>] 18.285      --.-K/s   in 0,1s    
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 2015-02-08 13:31:34 (129 KB/s) - auf die Standardausgabe geschrieben [18285/18285]
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 url	https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chef-11.18.6-1.el6.x86_64.rpm
+node-centos65.api.opscode.com/organizations/test151234 md5	b4ccffea24007b83ffdd99b16aea9661
+node-centos65.api.opscode.com/organizations/test151234 sha256	f531541c6786f274bd62fb46bc1ea8f2d70c083e10777b2544c6503c0f90c598
+node-centos65.api.opscode.com/organizations/test151234 downloaded metadata file looks valid...
+node-centos65.api.opscode.com/organizations/test151234 downloading https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chef-11.18.6-1.el6.x86_64.rpm
+node-centos65.api.opscode.com/organizations/test151234   to file /tmp/install.sh.2829/chef-11.18.6-1.el6.x86_64.rpm
+node-centos65.api.opscode.com/organizations/test151234 trying wget...
+node-centos65.api.opscode.com/organizations/test151234 trying curl...
+node-centos65.api.opscode.com/organizations/test151234 Comparing checksum with sha256sum...
+node-centos65.api.opscode.com/organizations/test151234 Installing Chef 11
+node-centos65.api.opscode.com/organizations/test151234 installing with rpm...
+node-centos65.api.opscode.com/organizations/test151234 Warnung: /tmp/install.sh.2829/chef-11.18.6-1.el6.x86_64.rpm: Header V4 DSA/SHA1 Signature, Schlüssel-ID 83ef826a: NOKEY
+node-centos65.api.opscode.com/organizations/test151234 Vorbereiten...              ########################################### [100%]
+node-centos65.api.opscode.com/organizations/test151234    1:chef                   ########################################### [100%]
+node-centos65.api.opscode.com/organizations/test151234 Thank you for installing Chef!
+node-centos65.api.opscode.com/organizations/test151234 Starting first Chef Client run...
+node-centos65.api.opscode.com/organizations/test151234 [2015-02-08T13:32:01+00:00] WARN: 
+node-centos65.api.opscode.com/organizations/test151234 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+node-centos65.api.opscode.com/organizations/test151234 SSL validation of HTTPS requests is disabled. HTTPS connections are still
+node-centos65.api.opscode.com/organizations/test151234 encrypted, but chef is not able to detect forged replies or man in the middle
+node-centos65.api.opscode.com/organizations/test151234 attacks.
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 To fix this issue add an entry like this to your configuration file:
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 ```
+node-centos65.api.opscode.com/organizations/test151234   # Verify all HTTPS connections (recommended)
+node-centos65.api.opscode.com/organizations/test151234   ssl_verify_mode :verify_peer
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234   # OR, Verify only connections to chef-server
+node-centos65.api.opscode.com/organizations/test151234   verify_api_cert true
+node-centos65.api.opscode.com/organizations/test151234 ```
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 To check your SSL configuration, or troubleshoot errors, you can use the
+node-centos65.api.opscode.com/organizations/test151234 `knife ssl check` command like so:
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 ```
+node-centos65.api.opscode.com/organizations/test151234   knife ssl check -c /etc/chef/client.rb
+node-centos65.api.opscode.com/organizations/test151234 ```
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 Starting Chef Client, version 11.18.6
+node-centos65.api.opscode.com/organizations/test151234 Creating a new client identity for node-centos65.vagrantup.com using the validator key.
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 ================================================================================
+node-centos65.api.opscode.com/organizations/test151234 Chef encountered an error attempting to create the client "node-centos65.vagrantup.com"
+node-centos65.api.opscode.com/organizations/test151234 ================================================================================
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 Authorization Error:
+node-centos65.api.opscode.com/organizations/test151234 --------------------
+node-centos65.api.opscode.com/organizations/test151234 Your validation client is not authorized to create the client for this node (HTTP 403).
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 Possible Causes:
+node-centos65.api.opscode.com/organizations/test151234 ----------------
+node-centos65.api.opscode.com/organizations/test151234 * There may already be a client named "node-centos65.vagrantup.com"
+node-centos65.api.opscode.com/organizations/test151234 * Your validation client (test151234-validator) may have misconfigured authorization permissions.
+node-centos65.api.opscode.com/organizations/test151234 
+node-centos65.api.opscode.com/organizations/test151234 [2015-02-08T13:32:04+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+node-centos65.api.opscode.com/organizations/test151234 Chef Client failed. 0 resources updated in 3.162025741 seconds
+node-centos65.api.opscode.com/organizations/test151234 [2015-02-08T13:32:04+00:00] ERROR: 403 "Forbidden"
+node-centos65.api.opscode.com/organizations/test151234 [2015-02-08T13:32:04+00:00] FATAL: Chef::Exceptions::ChildConvergeError: Chef run process exited unsuccessfully (exit code 1)
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+ERROR: Network Error: getaddrinfo: nodename nor servname provided, or not known
+Check your knife configuration and network settings
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+ERROR: Network Error: getaddrinfo: nodename nor servname provided, or not known
+Check your knife configuration and network settings
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+ERROR: Network Error: getaddrinfo: nodename nor servname provided, or not known
+Check your knife configuration and network settings
+TimMacBookAir-2:node2 Tim$ kitchen create
+-----> Starting Kitchen (v1.3.1)
+-----> Creating <node2-centos65>...
+       Bringing machine 'default' up with 'virtualbox' provider...
+       ==> default: Importing base box 'learningchef/centos65'...
+==> default: Matching MAC address for NAT networking...
+       ==> default: Checking if box 'learningchef/centos65' is up to date...
+       ==> default: Setting the name of the VM: node2-centos65_default_1423402439281_82922
+       ==> default: Fixed port collision for 22 => 2222. Now on port 2201.
+       ==> default: Clearing any previously set network interfaces...
+       ==> default: Preparing network interfaces based on configuration...
+           default: Adapter 1: nat
+           default: Adapter 2: hostonly
+       ==> default: Forwarding ports...
+           default: 22 => 2201 (adapter 1)
+       ==> default: Booting VM...
+       ==> default: Waiting for machine to boot. This may take a few minutes...
+           default: SSH address: 127.0.0.1:2201
+           default: SSH username: vagrant
+           default: SSH auth method: private key
+           default: Warning: Connection timeout. Retrying...
+           default: 
+           default: Vagrant insecure key detected. Vagrant will automatically replace
+           default: this with a newly generated keypair for better security.
+           default: 
+           default: Inserting generated public key within guest...
+           default: Removing insecure key from the guest if its present...
+           default: Key inserted! Disconnecting and reconnecting using new SSH key...
+       ==> default: Machine booted and ready!
+       ==> default: Checking for guest additions in VM...
+       ==> default: Setting hostname...
+       ==> default: Configuring and enabling network interfaces...
+       ==> default: Mounting shared folders...
+           default: /chef-repo => /Users/Tim/adesso local Dev/chef-starter/chef-repo
+       ==> default: Machine not provisioning because `--no-provision` is specified.
+       Vagrant instance <node2-centos65> created.
+       Finished creating <node2-centos65> (0m51.37s).
+-----> Kitchen is finished. (0m51.78s)
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+ERROR: Network Error: getaddrinfo: nodename nor servname provided, or not known
+Check your knife configuration and network settings
+TimMacBookAir-2:node2 Tim$ kitchen login
+Last login: Fri Dec  5 05:53:15 2014 from 10.0.2.2
+Welcome to your Packer-built virtual machine.
+[vagrant@node2-centos65 ~]$ exit
+Abgemeldet
+Connection to 127.0.0.1 closed.
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
+Connecting to node-centos65.api.opscode.com/organizations/test151234
+ERROR: Errno::ECONNRESET: Connection reset by peer
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+ERROR: Network Error: getaddrinfo: nodename nor servname provided, or not known
+Check your knife configuration and network settings
+TimMacBookAir-2:node2 Tim$ knife client list
+node-centos65.vagrantup.com
+test151234-validator
+TimMacBookAir-2:node2 Tim$ knife node list
+node-centos65.vagrantup.com
+TimMacBookAir-2:node2 Tim$ kitchen converge
+-----> Starting Kitchen (v1.3.1)
+-----> Converging <node2-centos65>...
+       Preparing files for transfer
+       Preparing script
+       bootstrap.sh not found so Kitchen will run a stubbed script. Is this intended?
+       Transferring files to <node2-centos65>
+       NO BOOTSTRAP SCRIPT PRESENT
+       Finished converging <node2-centos65> (0m0.12s).
+-----> Kitchen is finished. (0m0.57s)
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+ERROR: Network Error: getaddrinfo: nodename nor servname provided, or not known
+Check your knife configuration and network settings
+TimMacBookAir-2:node2 Tim$ sudo sh -c "echo '192.168.33.36 node2-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
+Password:
+TimMacBookAir-2:node2 Tim$ kitchen login
+Last login: Sun Feb  8 13:40:12 2015 from 10.0.2.2
+Welcome to your Packer-built virtual machine.
+[vagrant@node2-centos65 ~]$ sudo sh -c "echo '192.168.33.37 default-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
+[vagrant@node2-centos65 ~]$ exit
+Abgemeldet
+Connection to 127.0.0.1 closed.
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+ERROR: Network Error: Operation timed out - connect(2) for "node2-centos65.api.opscode.com/organizations/test151234" port 22
+Check your knife configuration and network settings
+TimMacBookAir-2:node2 Tim$ kitchen login
+Last login: Sun Feb  8 13:41:28 2015 from 10.0.2.2
+Welcome to your Packer-built virtual machine.
+[vagrant@node2-centos65 ~]$ sudo sh -c "echo '192.168.33.36 default-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
+[vagrant@node2-centos65 ~]$ exit
+Abgemeldet
+Connection to 127.0.0.1 closed.
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+ERROR: Network Error: Operation timed out - connect(2) for "node2-centos65.api.opscode.com/organizations/test151234" port 22
+Check your knife configuration and network settings
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+^CTimMacBookAir-2:node2 Tim$ kitchen destroy
+-----> Starting Kitchen (v1.3.1)
+-----> Destroying <node2-centos65>...
+       ==> default: Forcing shutdown of VM...
+       ==> default: Destroying VM and associated drives...
+       Vagrant instance <node2-centos65> destroyed.
+       Finished destroying <node2-centos65> (0m4.87s).
+-----> Kitchen is finished. (0m5.20s)
+TimMacBookAir-2:node2 Tim$ vagrant global-status 
+id       name    provider   state                                         directory                                                                                                 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+e8a6af6  default azure      Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant2                                                                      
+117e3b1  default azure      Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant                                                                       
+eca2481  default virtualbox running                                       /Users/Tim/adesso local Dev/chef-starter/chef-repo/cookbooks/node2/.kitchen/kitchen-vagrant/node-centos65 
+ 
+The above shows information about all known Vagrant environments
+on this machine. This data is cached and may not be completely
+up-to-date. To interact with any of the machines, you can go to
+that directory and run Vagrant, or you can use the ID directly
+with Vagrant commands from any directory. For example:
+"vagrant destroy 1a2b3c4d"
+TimMacBookAir-2:node2 Tim$ kitchen destroy
+-----> Starting Kitchen (v1.3.1)
+-----> Destroying <node2-centos65>...
+       Finished destroying <node2-centos65> (0m0.00s).
+-----> Kitchen is finished. (0m0.32s)
+TimMacBookAir-2:node2 Tim$ vagrant global-status 
+id       name    provider   state                                         directory                                                                                                 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+e8a6af6  default azure      Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant2                                                                      
+117e3b1  default azure      Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant                                                                       
+eca2481  default virtualbox running                                       /Users/Tim/adesso local Dev/chef-starter/chef-repo/cookbooks/node2/.kitchen/kitchen-vagrant/node-centos65 
+ 
+The above shows information about all known Vagrant environments
+on this machine. This data is cached and may not be completely
+up-to-date. To interact with any of the machines, you can go to
+that directory and run Vagrant, or you can use the ID directly
+with Vagrant commands from any directory. For example:
+"vagrant destroy 1a2b3c4d"
+TimMacBookAir-2:node2 Tim$ kitchen destroy node-centos65
+-----> Starting Kitchen (v1.3.1)
+>>>>>> 
+No instances for regex `node-centos65', try running `kitchen list'
+
+
+Usage:
+  kitchen destroy [INSTANCE|REGEXP|all]
+
+Options:
+  -c, [--concurrency=N]              # Run a destroy against all matching instances concurrently. Only N instances will run at the same time if a number is given. 
+  -p, [--parallel], [--no-parallel]  # [Future DEPRECATION, use --concurrency] Run a destroy against all matching instances concurrently. 
+  -l, [--log-level=LOG_LEVEL]        # Set the log level (debug, info, warn, error, fatal)
+
+Description:
+  The instance states are in order: destroy, create, converge, setup, verify, destroy. Change one or 
+  more instances from the current state to the destroy state. Actions for all intermediate states 
+  will be executed. See http://kitchen.ci for further explanation.
+TimMacBookAir-2:node2 Tim$ cd .kitchen
+.kitchen/     .kitchen.yml  
+TimMacBookAir-2:node2 Tim$ cd .kitchen/
+kitchen-vagrant/   logs/              node-centos65.yml  
+TimMacBookAir-2:node2 Tim$ cd .kitchen/
+kitchen-vagrant/   logs/              node-centos65.yml  
+TimMacBookAir-2:node2 Tim$ cd .kitchen/kitchen-vagrant/node-centos65/
+TimMacBookAir-2:node-centos65 Tim$ kitchen destroy
+-----> Starting Kitchen (v1.3.1)
+>>>>>> ------Exception-------
+>>>>>> Class: Kitchen::UserError
+>>>>>> Message: Kitchen YAML file /Users/Tim/adesso local Dev/chef-starter/chef-repo/cookbooks/node2/.kitchen/kitchen-vagrant/node-centos65/.kitchen.yml does not exist.
+>>>>>> ----------------------
+>>>>>> Please see .kitchen/logs/kitchen.log for more details
+>>>>>> Also try running `kitchen diagnose --all` for configuration
+
+TimMacBookAir-2:node-centos65 Tim$ vagrant halt
+==> default: Attempting graceful shutdown of VM...
+TimMacBookAir-2:node-centos65 Tim$ vagrant global-status 
+id       name    provider   state                                         directory                                                                                                 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+e8a6af6  default azure      Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant2                                                                      
+117e3b1  default azure      Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant                                                                       
+eca2481  default virtualbox poweroff                                      /Users/Tim/adesso local Dev/chef-starter/chef-repo/cookbooks/node2/.kitchen/kitchen-vagrant/node-centos65 
+ 
+The above shows information about all known Vagrant environments
+on this machine. This data is cached and may not be completely
+up-to-date. To interact with any of the machines, you can go to
+that directory and run Vagrant, or you can use the ID directly
+with Vagrant commands from any directory. For example:
+"vagrant destroy 1a2b3c4d"
+TimMacBookAir-2:node-centos65 Tim$ cd ..
+TimMacBookAir-2:kitchen-vagrant Tim$ vagrant halt
+A Vagrant environment or target machine is required to run this
+command. Run `vagrant init` to create a new Vagrant environment. Or,
+get an ID of a target machine from `vagrant global-status` to run
+this command on. A final option is to change to a directory with a
+Vagrantfile and to try again.
+TimMacBookAir-2:kitchen-vagrant Tim$ ls
+node-centos65
+TimMacBookAir-2:kitchen-vagrant Tim$ cd node-centos65/
+TimMacBookAir-2:node-centos65 Tim$ ls
+Vagrantfile
+TimMacBookAir-2:node-centos65 Tim$ vagrant halt
+TimMacBookAir-2:node-centos65 Tim$ vagrant global-status 
+id       name    provider   state                                         directory                                                                                                 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+e8a6af6  default azure      Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant2                                                                      
+117e3b1  default azure      Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant                                                                       
+eca2481  default virtualbox poweroff                                      /Users/Tim/adesso local Dev/chef-starter/chef-repo/cookbooks/node2/.kitchen/kitchen-vagrant/node-centos65 
+ 
+The above shows information about all known Vagrant environments
+on this machine. This data is cached and may not be completely
+up-to-date. To interact with any of the machines, you can go to
+that directory and run Vagrant, or you can use the ID directly
+with Vagrant commands from any directory. For example:
+"vagrant destroy 1a2b3c4d"
+TimMacBookAir-2:node-centos65 Tim$ vagrant destroy
+    default: Are you sure you want to destroy the 'default' VM? [y/N] y
+==> default: Destroying VM and associated drives...
+TimMacBookAir-2:node-centos65 Tim$ vagrant global-status 
+id       name    provider state                                         directory                            
+-------------------------------------------------------------------------------------------------------------
+e8a6af6  default azure  Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant2 
+117e3b1  default azure  Machine's current state is StoppedDeallocated /Users/Tim/adesso local Dev/vagrant  
+ 
+The above shows information about all known Vagrant environments
+on this machine. This data is cached and may not be completely
+up-to-date. To interact with any of the machines, you can go to
+that directory and run Vagrant, or you can use the ID directly
+with Vagrant commands from any directory. For example:
+"vagrant destroy 1a2b3c4d"
+TimMacBookAir-2:node-centos65 Tim$ cd ..
+TimMacBookAir-2:kitchen-vagrant Tim$ cd ..
+TimMacBookAir-2:.kitchen Tim$ cd ..
+TimMacBookAir-2:node2 Tim$ kitchen login
+>>>>>> ------Exception-------
+>>>>>> Class: Kitchen::UserError
+>>>>>> Message: Instance <node2-centos65> has not yet been created
+>>>>>> ----------------------
+>>>>>> Please see .kitchen/logs/kitchen.log for more details
+>>>>>> Also try running `kitchen diagnose --all` for configuration
+
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+^CTimMacBookAir-2:node2 Tim$ cd .kitchen
+TimMacBookAir-2:.kitchen Tim$ kitchen destroy
+-----> Starting Kitchen (v1.3.1)
+>>>>>> ------Exception-------
+>>>>>> Class: Kitchen::UserError
+>>>>>> Message: Kitchen YAML file /Users/Tim/adesso local Dev/chef-starter/chef-repo/cookbooks/node2/.kitchen/.kitchen.yml does not exist.
+>>>>>> ----------------------
+>>>>>> Please see .kitchen/logs/kitchen.log for more details
+>>>>>> Also try running `kitchen diagnose --all` for configuration
+
+TimMacBookAir-2:.kitchen Tim$ cd ..
+TimMacBookAir-2:node2 Tim$ kitchen destory
+Could not find command "destory".
+TimMacBookAir-2:node2 Tim$ kitchen destroy
+-----> Starting Kitchen (v1.3.1)
+-----> Destroying <node2-centos65>...
+       Finished destroying <node2-centos65> (0m0.00s).
+-----> Kitchen is finished. (0m0.52s)
+TimMacBookAir-2:node2 Tim$ kitchen converge
+-----> Starting Kitchen (v1.3.1)
+-----> Creating <node2-centos65>...
+       Bringing machine 'default' up with 'virtualbox' provider...
+       ==> default: Importing base box 'learningchef/centos65'...
+==> default: Matching MAC address for NAT networking...
+       ==> default: Checking if box 'learningchef/centos65' is up to date...
+       ==> default: Setting the name of the VM: node2-centos65_default_1423404049212_93022
+       ==> default: Clearing any previously set network interfaces...
+       ==> default: Preparing network interfaces based on configuration...
+           default: Adapter 1: nat
+           default: Adapter 2: hostonly
+       ==> default: Forwarding ports...
+           default: 22 => 2222 (adapter 1)
+       ==> default: Booting VM...
+       ==> default: Waiting for machine to boot. This may take a few minutes...
+           default: SSH address: 127.0.0.1:2222
+           default: SSH username: vagrant
+           default: SSH auth method: private key
+           default: Warning: Connection timeout. Retrying...
+           default: 
+           default: Vagrant insecure key detected. Vagrant will automatically replace
+           default: this with a newly generated keypair for better security.
+           default: 
+           default: Inserting generated public key within guest...
+           default: Removing insecure key from the guest if its present...
+           default: Key inserted! Disconnecting and reconnecting using new SSH key...
+       ==> default: Machine booted and ready!
+       ==> default: Checking for guest additions in VM...
+       ==> default: Setting hostname...
+       ==> default: Configuring and enabling network interfaces...
+       ==> default: Mounting shared folders...
+           default: /chef-repo => /Users/Tim/adesso local Dev/chef-starter/chef-repo
+       ==> default: Machine not provisioning because `--no-provision` is specified.
+       Vagrant instance <node2-centos65> created.
+       Finished creating <node2-centos65> (0m51.70s).
+-----> Converging <node2-centos65>...
+       Preparing files for transfer
+       Preparing script
+       bootstrap.sh not found so Kitchen will run a stubbed script. Is this intended?
+       Transferring files to <node2-centos65>
+       NO BOOTSTRAP SCRIPT PRESENT
+       Finished converging <node2-centos65> (0m0.13s).
+-----> Kitchen is finished. (0m52.16s)
+TimMacBookAir-2:node2 Tim$ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
+Connecting to node2-centos65.api.opscode.com/organizations/test151234
+node2-centos65.api.opscode.com/organizations/test151234 Installing Chef Client...
+node2-centos65.api.opscode.com/organizations/test151234 --2015-02-08 14:01:41--  https://www.opscode.com/chef/install.sh
+node2-centos65.api.opscode.com/organizations/test151234 Auflösen des Hostnamen »www.opscode.com«.... 184.106.28.91
+node2-centos65.api.opscode.com/organizations/test151234 Verbindungsaufbau zu www.opscode.com|184.106.28.91|:443... verbunden.
+node2-centos65.api.opscode.com/organizations/test151234 HTTP Anforderung gesendet, warte auf Antwort... 200 OK
+node2-centos65.api.opscode.com/organizations/test151234 Länge: 18285 (18K) [application/x-sh]
+node2-centos65.api.opscode.com/organizations/test151234 In »»STDOUT«« speichern.
+node2-centos65.api.opscode.com/organizations/test151234 
+ 0% [                                       ] 0           --.-K/s              Downloading Chef 11 for el...
+node2-centos65.api.opscode.com/organizations/test151234 downloading https://www.opscode.com/chef/metadata?v=11&prerelease=false&nightlies=false&p=el&pv=6&m=x86_64
+node2-centos65.api.opscode.com/organizations/test151234   to file /tmp/install.sh.2852/metadata.txt
+node2-centos65.api.opscode.com/organizations/test151234 trying wget...
+100%[======================================>] 18.285      --.-K/s   in 0,1s    
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234 2015-02-08 14:01:42 (134 KB/s) - auf die Standardausgabe geschrieben [18285/18285]
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234 url	https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chef-11.18.6-1.el6.x86_64.rpm
+node2-centos65.api.opscode.com/organizations/test151234 md5	b4ccffea24007b83ffdd99b16aea9661
+node2-centos65.api.opscode.com/organizations/test151234 sha256	f531541c6786f274bd62fb46bc1ea8f2d70c083e10777b2544c6503c0f90c598
+node2-centos65.api.opscode.com/organizations/test151234 downloaded metadata file looks valid...
+node2-centos65.api.opscode.com/organizations/test151234 downloading https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chef-11.18.6-1.el6.x86_64.rpm
+node2-centos65.api.opscode.com/organizations/test151234   to file /tmp/install.sh.2852/chef-11.18.6-1.el6.x86_64.rpm
+node2-centos65.api.opscode.com/organizations/test151234 trying wget...
+node2-centos65.api.opscode.com/organizations/test151234 trying curl...
+node2-centos65.api.opscode.com/organizations/test151234 Comparing checksum with sha256sum...
+node2-centos65.api.opscode.com/organizations/test151234 Installing Chef 11
+node2-centos65.api.opscode.com/organizations/test151234 installing with rpm...
+node2-centos65.api.opscode.com/organizations/test151234 Warnung: /tmp/install.sh.2852/chef-11.18.6-1.el6.x86_64.rpm: Header V4 DSA/SHA1 Signature, Schlüssel-ID 83ef826a: NOKEY
+node2-centos65.api.opscode.com/organizations/test151234 Vorbereiten...              ########################################### [100%]
+node2-centos65.api.opscode.com/organizations/test151234    1:chef                   ########################################### [100%]
+node2-centos65.api.opscode.com/organizations/test151234 Thank you for installing Chef!
+node2-centos65.api.opscode.com/organizations/test151234 Starting first Chef Client run...
+node2-centos65.api.opscode.com/organizations/test151234 [2015-02-08T14:02:10+00:00] WARN: 
+node2-centos65.api.opscode.com/organizations/test151234 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+node2-centos65.api.opscode.com/organizations/test151234 SSL validation of HTTPS requests is disabled. HTTPS connections are still
+node2-centos65.api.opscode.com/organizations/test151234 encrypted, but chef is not able to detect forged replies or man in the middle
+node2-centos65.api.opscode.com/organizations/test151234 attacks.
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234 To fix this issue add an entry like this to your configuration file:
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234 ```
+node2-centos65.api.opscode.com/organizations/test151234   # Verify all HTTPS connections (recommended)
+node2-centos65.api.opscode.com/organizations/test151234   ssl_verify_mode :verify_peer
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234   # OR, Verify only connections to chef-server
+node2-centos65.api.opscode.com/organizations/test151234   verify_api_cert true
+node2-centos65.api.opscode.com/organizations/test151234 ```
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234 To check your SSL configuration, or troubleshoot errors, you can use the
+node2-centos65.api.opscode.com/organizations/test151234 `knife ssl check` command like so:
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234 ```
+node2-centos65.api.opscode.com/organizations/test151234   knife ssl check -c /etc/chef/client.rb
+node2-centos65.api.opscode.com/organizations/test151234 ```
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234 Starting Chef Client, version 11.18.6
+node2-centos65.api.opscode.com/organizations/test151234 Creating a new client identity for node2-centos65.vagrantup.com using the validator key.
+node2-centos65.api.opscode.com/organizations/test151234 resolving cookbooks for run list: []
+node2-centos65.api.opscode.com/organizations/test151234 Synchronizing Cookbooks:
+node2-centos65.api.opscode.com/organizations/test151234 Compiling Cookbooks...
+node2-centos65.api.opscode.com/organizations/test151234 [2015-02-08T14:02:33+00:00] WARN: Node node2-centos65.vagrantup.com has an empty run list.
+node2-centos65.api.opscode.com/organizations/test151234 Converging 0 resources
+node2-centos65.api.opscode.com/organizations/test151234 
+node2-centos65.api.opscode.com/organizations/test151234 Running handlers:
+node2-centos65.api.opscode.com/organizations/test151234 Running handlers complete
+node2-centos65.api.opscode.com/organizations/test151234 Chef Client finished, 0/0 resources updated in 24.081137912 seconds
+TimMacBookAir-2:node2 Tim$ kitchen login
+Last login: Sun Feb  8 14:01:41 2015 from 192.168.33.1
+Welcome to your Packer-built virtual machine.
+[vagrant@node2-centos65 ~]$ chef-client
+[2015-02-08T14:09:53+00:00] WARN: 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+SSL validation of HTTPS requests is disabled. HTTPS connections are still
+encrypted, but chef is not able to detect forged replies or man in the middle
+attacks.
+
+To fix this issue add an entry like this to your configuration file:
+
+```
+  # Verify all HTTPS connections (recommended)
+  ssl_verify_mode :verify_peer
+
+  # OR, Verify only connections to chef-server
+  verify_api_cert true
+```
+
+To check your SSL configuration, or troubleshoot errors, you can use the
+`knife ssl check` command like so:
+
+```
+  knife ssl check -c /etc/chef/client.rb
+```
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+Starting Chef Client, version 11.18.6
+[2015-02-08T14:09:55+00:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::EACCES: Permission denied - /etc/chef/client.pem>
+
+================================================================================
+Chef encountered an error attempting to create the client "node2-centos65.vagrantup.com"
+================================================================================
+
+Private Key Not Found:
+----------------------
+Your private key could not be loaded. If the key file exists, ensure that it is
+readable by chef-client.
+
+Relevant Config Settings:
+-------------------------
+validation_key "/etc/chef/validation.pem"
+
+[2015-02-08T14:09:55+00:00] FATAL: Stacktrace dumped to /home/vagrant/.chef/cache/chef-stacktrace.out
+Chef Client failed. 0 resources updated in 1.216141809 seconds
+[2015-02-08T14:09:55+00:00] ERROR: I cannot read /etc/chef/client.pem, which you told me to use to sign requests!
+[2015-02-08T14:09:55+00:00] FATAL: Chef::Exceptions::ChildConvergeError: Chef run process exited unsuccessfully (exit code 1)
+[vagrant@node2-centos65 ~]$ ls /etc/chef
+client.pem  client.rb  first-boot.json  validation.pem
+[vagrant@node2-centos65 ~]$ sudo chef-client
+[2015-02-08T14:11:20+00:00] WARN: 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+SSL validation of HTTPS requests is disabled. HTTPS connections are still
+encrypted, but chef is not able to detect forged replies or man in the middle
+attacks.
+
+To fix this issue add an entry like this to your configuration file:
+
+```
+  # Verify all HTTPS connections (recommended)
+  ssl_verify_mode :verify_peer
+
+  # OR, Verify only connections to chef-server
+  verify_api_cert true
+```
+
+To check your SSL configuration, or troubleshoot errors, you can use the
+`knife ssl check` command like so:
+
+```
+  knife ssl check -c /etc/chef/client.rb
+```
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+Starting Chef Client, version 11.18.6
+resolving cookbooks for run list: []
+Synchronizing Cookbooks:
+Compiling Cookbooks...
+[2015-02-08T14:11:23+00:00] WARN: Node node2-centos65.vagrantup.com has an empty run list.
+Converging 0 resources
+
+Running handlers:
+Running handlers complete
+Chef Client finished, 0/0 resources updated in 4.599510112 seconds
+[vagrant@node2-centos65 ~]$ exit
+Abgemeldet
+Connection to 127.0.0.1 closed.
+TimMacBookAir-2:node2 Tim$ knife node run_list add node-centos65.vagrantup.com "recipe[chef-client::delete_validation],recipe[chef-client],recipe[chef-client::config]"
+node-centos65.vagrantup.com:
+  run_list:
+    recipe[chef-client::delete_validation]
+    recipe[chef-client]
+    recipe[chef-client::config]
+TimMacBookAir-2:node2 Tim$ knife node run_list add node2-centos65.vagrantup.com "recipe[chef-client::delete_validation],recipe[chef-client],recipe[chef-client::config]"
+node2-centos65.vagrantup.com:
+  run_list:
+    recipe[chef-client::delete_validation]
+    recipe[chef-client]
+    recipe[chef-client::config]
+TimMacBookAir-2:node2 Tim$ kitchen login
+Last login: Sun Feb  8 14:03:09 2015 from 10.0.2.2
+Welcome to your Packer-built virtual machine.
+[vagrant@node2-centos65 ~]$ sudo chef-client
+[2015-02-08T14:14:31+00:00] WARN: 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+SSL validation of HTTPS requests is disabled. HTTPS connections are still
+encrypted, but chef is not able to detect forged replies or man in the middle
+attacks.
+
+To fix this issue add an entry like this to your configuration file:
+
+```
+  # Verify all HTTPS connections (recommended)
+  ssl_verify_mode :verify_peer
+
+  # OR, Verify only connections to chef-server
+  verify_api_cert true
+```
+
+To check your SSL configuration, or troubleshoot errors, you can use the
+`knife ssl check` command like so:
+
+```
+  knife ssl check -c /etc/chef/client.rb
+```
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+Starting Chef Client, version 11.18.6
+resolving cookbooks for run list: ["chef-client::delete_validation", "chef-client", "chef-client::config"]
+Synchronizing Cookbooks:
+  - chef-client
+  - cron
+  - logrotate
+  - chef_handler
+  - windows
+Compiling Cookbooks...
+Converging 16 resources
+Recipe: chef-client::delete_validation
+  * file[/etc/chef/validation.pem] action delete
+    - delete file /etc/chef/validation.pem
+Recipe: chef-client::init_service
+  * directory[/var/run/chef] action create
+    - create new directory /var/run/chef
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+  * directory[/var/cache/chef] action create
+    - create new directory /var/cache/chef
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+  * directory[/var/lib/chef] action create
+    - create new directory /var/lib/chef
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+  * directory[/var/log/chef] action create
+    - create new directory /var/log/chef
+    - change mode from '' to '0750'
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+  * directory[/etc/chef] action create (up to date)
+  * template[/etc/init.d/chef-client] action create
+    - create new file /etc/init.d/chef-client
+    - update content in file /etc/init.d/chef-client from none to f352ec
+    --- /etc/init.d/chef-client	2015-02-08 14:14:46.023778676 +0000
+    +++ /tmp/chef-rendered-template20150208-3429-fbj0th	2015-02-08 14:14:46.024779193 +0000
+    @@ -1 +1,110 @@
+    +#!/bin/bash
+    +#
+    +# chef-client Startup script for the Chef client
+    +#
+    +# chkconfig: - 98 02
+    +# description: Client component of the Chef systems integration framework.
+    +
+    +### BEGIN INIT INFO
+    +# Provides: chef-client
+    +# Required-Start: $local_fs $network $remote_fs
+    +# Required-Stop: $local_fs $network $remote_fs
+    +# Should-Start: $named $time
+    +# Should-Stop: $named $time
+    +# Short-Description: Startup script for the Chef client
+    +# Description: Client component of the Chef systems integration framework.
+    +### END INIT INFO
+    +
+    +# Source function library
+    +. /etc/init.d/functions
+    +
+    +exec="/usr/bin/chef-client"
+    +prog="chef-client"
+    +
+    +[ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog
+    +
+    +config=${CONFIG-/etc/chef/client.rb}
+    +pidfile=${PIDFILE-/var/run/chef/client.pid}
+    +lockfile=${LOCKFILE-/var/lock/subsys/$prog}
+    +interval=${INTERVAL-1800}
+    +splay=${SPLAY-20}
+    +options=${OPTIONS-}
+    +
+    +start() {
+    +    [ -x $exec ] || exit 5
+    +    [ -f $config ] || exit 6
+    +    echo -n $"Starting $prog: "
+    +    daemon $exec -d -c "$config" -P "$pidfile" -i "$interval" -s "$splay" "$options"
+    +    retval=$?
+    +    echo
+    +    [ $retval -eq 0 ] && touch $lockfile
+    +    return $retval
+    +}
+    +
+    +stop() {
+    +    echo -n $"Stopping $prog: "
+    +    killproc -p $pidfile $exec
+    +    retval=$?
+    +    echo
+    +    [ $retval -eq 0 ] && rm -f $lockfile
+    +    return $retval
+    +}
+    +
+    +restart () {
+    +    stop
+    +    start
+    +}
+    +
+    +reload() {
+    +    echo -n $"Reloading $prog: "
+    +    killproc -p $pidfile $exec -HUP
+    +    retval=$?
+    +    echo
+    +    return $retval
+    +}
+    +
+    +force_reload() {
+    +    restart
+    +}
+    +
+    +rh_status() {
+    +    # run checks to determine if the service is running or use generic status
+    +    status -p $pidfile $prog
+    +}
+    +
+    +rh_status_q() {
+    +    rh_status >/dev/null 2>&1
+    +}
+    +
+    +case "$1" in
+    +    start)
+    +        rh_status_q && exit 0
+    +        $1
+    +        ;;
+    +    stop)
+    +        rh_status_q || exit 0
+    +        $1
+    +        ;;
+    +    restart)
+    +        $1
+    +        ;;
+    +    reload)
+    +        rh_status_q || exit 7
+    +        $1
+    +        ;;
+    +    force-reload)
+    +        force_reload
+    +        ;;
+    +    status)
+    +        rh_status
+    +        ;;
+    +    condrestart|try-restart)
+    +        rh_status_q || exit 0
+    +        restart
+    +        ;;
+    +    *)
+    +        echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload}"
+    +        exit 2
+    +esac
+    +exit $?
+    - change mode from '' to '0755'
+  * template[/etc/sysconfig/chef-client] action create
+    - create new file /etc/sysconfig/chef-client
+    - update content in file /etc/sysconfig/chef-client from none to ec7de1
+    --- /etc/sysconfig/chef-client	2015-02-08 14:14:46.633083297 +0000
+    +++ /tmp/chef-rendered-template20150208-3429-73rmwb	2015-02-08 14:14:46.633083297 +0000
+    @@ -1 +1,15 @@
+    +# Configuration file for the chef-client service
+    +
+    +CONFIG=/etc/chef/client.rb
+    +PIDFILE=/var/run/chef/client.pid
+    +#LOCKFILE=/var/lock/subsys/chef-client
+    +# Sleep interval between runs.
+    +# This value is in seconds.
+    +INTERVAL=1800
+    +# Maximum amount of random delay before starting a run. Prevents every client
+    +# from contacting the server at the exact same time.
+    +# This value is in seconds.
+    +SPLAY=300
+    +# Any additional chef-client options.
+    +OPTIONS=""
+    - change mode from '' to '0644'
+  * service[chef-client] action enable
+    - enable service service[chef-client]
+  * service[chef-client] action start
+    - start service service[chef-client]
+Recipe: logrotate::default
+  * package[logrotate] action install (up to date)
+  * directory[/etc/logrotate.d] action create (up to date)
+Recipe: chef-client::config
+  * template[/etc/logrotate.d/chef-client] action create
+    - create new file /etc/logrotate.d/chef-client
+    - update content in file /etc/logrotate.d/chef-client from none to 934f89
+    --- /etc/logrotate.d/chef-client	2015-02-08 14:15:24.277898520 +0000
+    +++ /tmp/chef-rendered-template20150208-3429-1uyvnkp	2015-02-08 14:15:24.281900263 +0000
+    @@ -1 +1,12 @@
+    +# This file was generated by Chef for node2-centos65.vagrantup.com.
+    +# Do not modify this file by hand!
+    +
+    +"/var/log/chef/client.log" {
+    +  weekly
+    +  rotate 12
+    +  compress
+    +  postrotate
+    +/etc/init.d/chef-client reload >/dev/null || :
+    +  endscript
+    +}
+    - change mode from '' to '0440'
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+  * file[/var/log/chef/client.log] action create
+    - create new file /var/log/chef/client.log
+    - change mode from '' to '0640'
+  * template[/etc/chef/client.rb] action create
+    - update content in file /etc/chef/client.rb from a487da to 471e52
+    --- /etc/chef/client.rb	2015-02-08 14:02:08.302107835 +0000
+    +++ /tmp/chef-rendered-template20150208-3429-1koctbb	2015-02-08 14:15:24.867191240 +0000
+    @@ -1,6 +1,11 @@
+    -log_location     STDOUT
+    -chef_server_url  "https://api.opscode.com/organizations/test151234"
+    +chef_server_url "https://api.opscode.com/organizations/test151234"
+    +log_location '/var/log/chef/client.log'
+     validation_client_name "test151234-validator"
+    +verify_api_cert true
+     # Using default node name (fqdn)
+     
+    +
+    +Dir.glob(File.join("/etc/chef", "client.d", "*.rb")).each do |conf|
+    +  Chef::Config.from_file(conf)
+    +end
+  * ruby_block[reload_client_config] action create
+    - execute the ruby block reload_client_config
+  * directory[/etc/chef/client.d] action create
+    - create new directory /etc/chef/client.d
+    - change mode from '' to '0755'
+    - change owner from '' to 'root'
+    - change group from '' to 'root'
+  * ruby_block[reload_client_config] action nothing (skipped due to action :nothing)
+Recipe: chef-client::init_service
+  * service[chef-client] action restart
+    - restart service service[chef-client]
+
+Running handlers:
+Running handlers complete
+Chef Client finished, 15/18 resources updated in 60.053545796 seconds
+[vagrant@node2-centos65 ~]$ 

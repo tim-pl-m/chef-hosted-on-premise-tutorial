@@ -1,4 +1,5 @@
 # Chef
+.chef/trusted_certs/
 .chef/*.pem
 .chef/*.crt
 .chef/encrypted_data_bag_secret
