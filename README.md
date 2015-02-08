@@ -29,9 +29,11 @@ knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-v
 -to verify login to https://manage.chef.io/organizations/test151234/nodes
 
 suspend and reactivate the node:
+```bash
 cd /chef-repo/cookbooks/node/.kitchen/kitchen-vagrant/node-centos65 
 vagrant suspend
 vagrant up
+```
 
 important chef commands:
 vagrant global-status 
