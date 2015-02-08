@@ -1,4 +1,4 @@
-chef on premise tutorial
+chef hosted on premise with kitchen tutorial
 ===============
 
 -thanks to o'reilly and mischa taylor for the book 'learning chef'
@@ -21,13 +21,17 @@ sudo sh -c "echo '192.168.33.35 node-centos65.api.opscode.com/organizations/test
 cd chef-repo/cookbooks/node
 kitchen converge
 kitchen login
-[vagrant@node-centos65 ~]$ sudo sh -c "echo '192.168.33.35 node-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
+[vagrant@node-centos65 ~]$ sudo sh -c "echo '192.168.33.35 default-centos65.api.opscode.com/organizations/test151234' >> /etc/hosts"
 [vagrant@node-centos65 ~]$ exit
 kitchen create
 knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
 ```
 -to verify login to https://manage.chef.io/organizations/test151234/nodes
 
+suspend and reactivate the node:
+cd /chef-repo/cookbooks/node/.kitchen/kitchen-vagrant/node-centos65 
+vagrant suspend
+vagrant up
 
 important chef commands:
 vagrant global-status 

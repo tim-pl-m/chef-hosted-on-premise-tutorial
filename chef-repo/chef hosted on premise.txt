@@ -103,8 +103,12 @@ knife node node-centos65.vagrantup.com show -r
 ❑ clock has drifted by more than 15 minutes.
 	?
 
-❑ sudo: chef-client: command not found
-	knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node-centos65.api.opscode.com/organizations/test151234
+✔ sudo: chef-client: command not found
+	happens after kitchen destroy?
+	knife node delete node2-centos65.vagrantup.com
+	knife client delete node2-centos65.vagrantup.com
+
+	knife bootstrap --sudo --ssh-user vagrant --ssh-password vagrant --no-host-key-verify node2-centos65.api.opscode.com/organizations/test151234
 		reinstalls chef-client
 	(or on vm: install chef-client)
 
@@ -141,6 +145,6 @@ apache:
 	see book
 	http://gettingstartedwithchef.com/managing-multiple-nodes.html
 
-
+❑ vagrant halt possible or kitchen destory?
 
 
