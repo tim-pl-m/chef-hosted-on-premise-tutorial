@@ -59,7 +59,7 @@ kitchen list
 	 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout filename.key \  
 	   -out filename.pem #create a second rsa-keypair
  	 chmod 0600 filename.key #secure your private-key
-	 ``
+	 ```
 	 and add the paths of your certificates to your vagrantfile: 
 	 set `config.ssh.private_key_path`, `azure.ssh_private_key_file`, `azure.ssh_certificate_file`
 
