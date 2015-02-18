@@ -50,10 +50,11 @@ knife client list
 kitchen list
 
 	test .yaml file for syntax errors
+
 1. bla
-2. you can connect with or without creating certificates to your vm:
-  1. with certificates:
-     Create the certificate-pair:
+2. you can connect with or without creating certificates to your vm
+  1. with certificates  
+     Create the certificate-pair:  
 	 ```bash
 	 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout filename.key \  
 	   -out filename.pem #create a second rsa-keypair

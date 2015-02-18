@@ -1,0 +1,46 @@
+[vagrant@node2-centos65 ~]$ sudo chef-client
+[2015-02-08T14:50:01+00:00] WARN: 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+SSL validation of HTTPS requests is disabled. HTTPS connections are still
+encrypted, but chef is not able to detect forged replies or man in the middle
+attacks.
+
+To fix this issue add an entry like this to your configuration file:
+
+```
+  # Verify all HTTPS connections (recommended)
+  ssl_verify_mode :verify_peer
+
+  # OR, Verify only connections to chef-server
+  verify_api_cert true
+```
+
+To check your SSL configuration, or troubleshoot errors, you can use the
+`knife ssl check` command like so:
+
+```
+  knife ssl check -c /etc/chef/client.rb
+```
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+Starting Chef Client, version 11.18.6
+Creating a new client identity for node2-centos65.vagrantup.com using the validator key.
+
+================================================================================
+Chef encountered an error attempting to create the client "node2-centos65.vagrantup.com"
+================================================================================
+
+Authorization Error:
+--------------------
+Your validation client is not authorized to create the client for this node (HTTP 403).
+
+Possible Causes:
+----------------
+* There may already be a client named "node2-centos65.vagrantup.com"
+* Your validation client (test151234-validator) may have misconfigured authorization permissions.
+
+[2015-02-08T14:50:04+00:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+Chef Client failed. 0 resources updated in 3.332630718 seconds
+[2015-02-08T14:50:04+00:00] ERROR: 403 "Forbidden"
+[2015-02-08T14:50:04+00:00] FATAL: Chef::Exceptions::ChildConvergeError: Chef run process exited unsuccessfully (exit code 1)
