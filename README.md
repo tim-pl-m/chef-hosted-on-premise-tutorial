@@ -2,6 +2,7 @@ chef hosted on premise with kitchen tutorial
 ===============
 
 -thanks to o'reilly and mischa taylor for the book 'learning chef'
+
 -register and manage: https://manage.chef.io
 
 ❑ what problem to solve  
