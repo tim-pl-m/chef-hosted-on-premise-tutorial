@@ -10,6 +10,7 @@ chef hosted on premise with kitchen tutorial
 
 -download chef-starter for your account
 
+
 verify your setup:
 ```bash
 knife ssl check 
