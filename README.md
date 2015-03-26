@@ -13,7 +13,6 @@ chef hosted on premise with kitchen tutorial
 
 
 
-
 verify your setup:
 ```bash
 knife ssl check 
