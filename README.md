@@ -16,6 +16,8 @@ knife ssl check
 knife client list
 ```
 
+
+
 create the node(bootstrap):
 ```bash
 sudo sh -c "echo '192.168.33.35 node-centos65.api.opscode.com/organizations/test151234'  
